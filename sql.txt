@@ -17,12 +17,22 @@ VALUE (1,"Pen", 1.20)
 SELECT * FROM 'products';
 
 
-///////Update Tale!
+///////Update Table!
 
 INSERT INTO products (id, name)
 VALUE (2,"Pencil")
 
 SELECT * FROM 'products';
+
+///////Read Table!
+
+SELECT name, price FROM 'products';
+
+///First single Row(Reading and Grabbing data)!
+
+SELECT * FROM products
+WHERE id=1;
+
 
 
 
