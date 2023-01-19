@@ -1,5 +1,9 @@
-Create Table!
+CRUD
+Create, Read, Update, Destroy!
 
+///////Create Table!
+
+SQL Schema!
 CREATE TABLE products (
     id INT NOT NULL, 
     name STRING,
@@ -9,3 +13,19 @@ CREATE TABLE products (
 
 INSERT INTO products
 VALUE (1,"Pen", 1.20)
+
+SELECT * FROM 'products';
+
+
+///////Update Tale!
+
+INSERT INTO products (id, name)
+VALUE (2,"Pencil")
+
+SELECT * FROM 'products';
+
+
+
+
+
+
