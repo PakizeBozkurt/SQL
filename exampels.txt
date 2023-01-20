@@ -15,3 +15,14 @@ Solution should use pure SQL.
 /*  SQL  */
 SELECT * FROM Companies
 ORDER BY Employees DESC;
+
+/////// 2. Question:
+
+Create a simple SELECT query to display student information of all ACTIVE students.
+
+TABLE STRUCTURE:
+
+students
+Id	FirstName	LastName	IsActive
+
+Note: IsActive (true or false)
