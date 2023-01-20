@@ -26,3 +26,8 @@ students
 Id	FirstName	LastName	IsActive
 
 Note: IsActive (true or false)
+
+
+/// Answer:
+
+SELECT * FROM students WHERE IsActive = 1;
