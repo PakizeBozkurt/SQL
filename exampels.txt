@@ -10,3 +10,8 @@ motto
 employees
 Solution should use pure SQL. 
 
+/// Answer:
+
+/*  SQL  */
+SELECT * FROM Companies
+ORDER BY Employees DESC;
