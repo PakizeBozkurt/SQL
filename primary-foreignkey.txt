@@ -5,3 +5,30 @@ A foreign key creates a link between two tables, allowing data in one table to b
 Foreign keys are used to enforce referential integrity, which ensures that data in the related tables is consistent and accurate. It also helps to prevent data from becoming orphaned or inconsistent. For example, if a foreign key is defined and a record in the primary key table is deleted, the corresponding records in the table with the foreign key will also be deleted.
 
 You can create a foreign key constraint using the FOREIGN KEY keyword in the CREATE TABLE statement or using ALTER TABLE command to add a foreign key to an existing table.
+
+
+
+///example
+
+you have a database with two tables: customers and orders. The customers table has the following fields: customer_id, first_name, last_name, email, etc. The orders table has the following fields: order_id, customer_id, order_date, product, quantity, etc.
+
+In this example, the customer_id field in the orders table is a foreign key that references the customer_id field in the customers table, which is the primary key of that table.
+
+To create this relationship, you can use the following SQL command:
+
+ALTER TABLE orders
+ADD FOREIGN KEY (customer_id) REFERENCES customers (customer_id);
+
+This creates a foreign key constraint on the customer_id field in the orders table, and specifies that it references the customer_id field in the customers table.
+
+Now you can use this foreign key to retrieve information about the customer who placed an order. For example, the following SQL query will retrieve the first name, last name, and email of the customer who placed order with id 1:
+
+SELECT first_name, last_name, email
+FROM customers
+WHERE customer_id = (
+    SELECT customer_id FROM orders WHERE order_id = 1
+);
+
+This query first retrieves the customer_id of the order with order_id 1 using a subquery, and then uses that customer_id to retrieve the customer's details from the customers table.
+
+Foreign keys are useful for maintaining consistency and integrity in a relational database by ensuring that data in different tables is related correctly.
