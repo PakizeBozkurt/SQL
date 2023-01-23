@@ -11,6 +11,20 @@ DBCP (Database Connection Pooling)
 BoneCP
 HikariCP
 
+You can use the pg-pool library to create a connection pool for a PostgreSQL database in a Node.js application.
+
+Here is an example of how to set up a connection pool using pg-pool library:
+
+const { Pool } = require('pg-pool')
+
+const pool = new Pool({
+  user: 'your_db_user',
+  host: 'your_db_host',
+  database: 'your_db_name',
+  password: 'your_db_password',
+  port: 5432,
+})
+
 
 
 
