@@ -1,0 +1,18 @@
+In SQL, a connection pool is a cache of database connections maintained so that the connections can be reused when new requests to the database are made. Connection pools are used to enhance the performance of executing commands on a database.
+
+Instead of creating a new connection to the database for each user request, a connection pool maintains a set of open connections. When a connection is requested, an available connection is provided from the pool. If all connections are currently being used, a new connection is created only if the maximum pool size has not been reached.
+
+The use of a connection pool reduces the overhead of repeatedly opening and closing connections, and improves the overall performance of the application.
+
+Some common libraries used for connection pooling with SQL are:
+
+c3p0
+DBCP (Database Connection Pooling)
+BoneCP
+HikariCP
+
+
+
+
+
+
