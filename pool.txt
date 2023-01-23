@@ -25,6 +25,19 @@ const pool = new Pool({
   port: 5432,
 })
 
+You can then use the query() method to execute queries on the database and the connect() method to get a client from the pool.
+
+pool.query('SELECT NOW()', (err, res) => {
+  console.log(err, res)
+  pool.end()
+})
+
+const client = await pool.connect()
+const res = await client.query('SELECT NOW()')
+console.log(res.rows)
+client.release()
+
+
 
 
 
