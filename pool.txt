@@ -42,6 +42,21 @@ When you are done with the client, you should release it back to the pool by cal
 Please note that this is just an example of how to set up a connection pool using the pg-pool library, the specific implementation will depend on the database you are using and the requirement of your application.
 
 
+To connect a Node.js application with a database, you'll need to use a database driver specific to the database --->
+
+Here is an example of how to connect to a PostgreSQL database using the pg driver:
+
+const { Client } = require('pg')
+
+const client = new Client({
+  host: 'your_db_host',
+  user: 'your_db_user',
+  password: 'your_db_password',
+  database: 'your_db_name'
+})
+
+client.connect()
+
 
 
 
