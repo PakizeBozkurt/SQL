@@ -38,3 +38,30 @@ Together, these two statements accomplish the following:
 The first statement is inserting a new row into the participants table with the specified values.
 The second statement is selecting all the data from the participants table.
 This plan can be useful when you want to insert a new row into a table and then retrieve the data from that table to check that the row has been inserted correctly.>
+
+3. Given a table of random numbers as follows:
+
+numbers table schema
+id
+number1
+number2
+Your job is to return table with similar structure and headings, where if the sum of a column is odd, the column shows the minimum value for that column, and when the sum is even, it shows the max value. You must use a case statement.
+
+output table schema
+number1
+number2
+
+SELECT 
+CASE 
+    WHEN SUM(number1) % 2 = 1 THEN MIN(number1) 
+    ELSE MAX(number1) 
+END AS number1, 
+CASE 
+    WHEN SUM(number2) % 2 = 1 THEN MIN(number2) 
+    ELSE MAX(number2) 
+END AS number2 
+FROM numbers;
+
+<This query will first calculate the sum of the 'number1' column, and check if it's odd or even using the modulus operator (%). If it's odd, it will return the minimum value of 'number1' column, and if it's even, it will return the maximum value of the 'number1' column. The same process is repeated for 'number2' column.
+
+Please note that this query will return only one row, with one column for each of the two columns in the original table. if you want the whole table you should add the id column and group by it.>
