@@ -10,3 +10,31 @@ SELECT *
 FROM people
 WHERE age > 50
 ORDER BY age DESC;
+
+<This statement selects all columns (*) from the people table, where the age is greater than 50 and it orders the results by age in descending order.>
+
+2.You received an invitation to an amazing party. Now you need to write an insert statement to add yourself to the table of participants.
+
+participants table schema
+
+name (string)
+age (integer)
+attending (boolean)
+NOTES:
+
+Since alcohol will be served, you can only attend if you are 21 or older
+You can't attend if the attending column returns anything but true.
+
+INSERT INTO participants(name, age, attending)
+VALUES ('name', 33, true);
+
+SELECT * FROM participants;
+
+<This statement is inserting a new row into the participants table. The values being inserted into the row are 'name' for the name column, 33 for the age column, and true for the attending column.
+This statement is selecting all columns (*) from the participants table. This statement is used to retrieve all data from the table after the first statement has been executed.
+
+Together, these two statements accomplish the following:
+
+The first statement is inserting a new row into the participants table with the specified values.
+The second statement is selecting all the data from the participants table.
+This plan can be useful when you want to insert a new row into a table and then retrieve the data from that table to check that the row has been inserted correctly.>
