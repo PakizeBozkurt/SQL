@@ -62,5 +62,10 @@ WHERE id=2;
 DELETE FROM products
 WHERE id = 2;
 
+///////Getting back data!
+
+INSERT INTO products
+VALUES (2, "Pencil", 0.80, 12);
+
 
 
