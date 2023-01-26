@@ -62,10 +62,19 @@ WHERE id=2;
 DELETE FROM products
 WHERE id = 2;
 
-///////Getting back data!
+///////Getting data back!
 
 INSERT INTO products
 VALUES (2, "Pencil", 0.80, 12);
 
 
+/////// Foreing key(is a key used to link two tables together.)!
+
+CREATE TABLE orders (
+    id INT NOT NULL,
+    order_number INT,
+    customer_id INT,
+    product_id INT,
+    PRIMARY KEY (id),
+)
 
