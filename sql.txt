@@ -76,5 +76,7 @@ CREATE TABLE orders (
     customer_id INT,
     product_id INT,
     PRIMARY KEY (id),
+    FOREING KEY (customer_id) REFERENCES customers(id)
+    FOREING KEY (product_id) REFERENCES products(id)
 )
 
