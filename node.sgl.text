@@ -29,3 +29,93 @@ router.post('/add', (req, res) => {
     });
 });
 
+// Validation function
+function validateUser(user) {
+    const schema = {
+        name: Joi.string().min(5).max(50).required(),
+        email: Joi.string().min(5).max(255).required().email(),
+        password: Joi.string().min(5).max(1024).required()
+    };
+
+    return Joi.validate(user, schema);
+}
+
+module.exports = router;
+
+This endpoint uses the express library to handle HTTP requests and routes, the pg library to interact with PostgreSQL, and the Joi library for data validation. The data is first validated using the validateUser function, which checks that the name, email, and password fields are all present and meet certain criteria (e.g. minimum and maximum length, valid email format). If the data is invalid, the endpoint returns a 400 Bad Request response. If the data is valid, a new user is added to the database using the query method provided by the pg library.
+
+To prevent SQL injection attacks, the endpoint uses parameterized queries, which automatically escape any user input to prevent injection attacks. Also, the pg-escape package can be used to escape values.
+
+For retrieving data from the database with multiple parameters, you can use query string parameters in your endpoint. Here is an example:
+
+router.get('/users', (req, res) => {
+  pool.query('SELECT * FROM users WHERE name = $1 AND age = $2', [req.query.name, req.query.age], (error, result) => {
+    if (error) {
+      res.status(500).send(error);
+    } else {
+      res.send(result);
+    }
+  });
+});
+
+For updating data in a database, you can use the query method provided by the pg library with a SQL UPDATE statement. Here is an example:
+
+router.put('/users/:id', (req, res) => {
+  pool.query('UPDATE users SET name = $1, age = $2 WHERE id = $3', [req.body.name, req.body.age, req.params.id], (error, result)
+
+
+//////// create a RESTful API endpoint using Node.js and the pg module to add data to a PostgreSQL database:
+
+const express = require('express');
+const app = express();
+const pg = require('pg');
+
+app.use(express.json());
+
+const pool = new pg.Pool({
+  user: 'username',
+  host: 'hostname',
+  database: 'dbname',
+  password: 'password',
+  port: 5432,
+});
+
+app.post('/api/add', (req, res) => {
+  const data = req.body;
+  pool.query('INSERT INTO table_name (column1, column2, column3) VALUES ($1, $2, $3)', [data.column1, data.column2, data.column3], (error, result) => {
+    if (error) {
+      res.status(500).json({ message: error.message });
+    } else {
+      res.status(201).json(result);
+    }
+  });
+});
+
+app.listen(3000, () => {
+  console.log('Server started on port 3000.');
+});
+
+To validate data before adding it to the database, you can use a library such as joi to define validation rules for your data and check that the data meets those rules before adding it to the database.
+
+const Joi = require('joi');
+
+const schema = Joi.object().keys({
+  column1: Joi.string().required(),
+  column2: Joi.number().required(),
+  column3: Joi.date().required()
+});
+
+app.post('/api/add', (req, res) => {
+  const { error } = Joi.validate(req.body, schema);
+  if (error) {
+    return res.status(400).json({ message: error.details[0].message });
+  }
+  // rest of the code
+});
+
+To prevent SQL injection attacks, you should use parameterized queries, which automatically escape any user input that is used in a SQL query.
+
+const name = req.query.name;
+pool.query('SELECT * FROM users WHERE name = $1', [name], (error, result) => {
+  // rest of the code
+});
