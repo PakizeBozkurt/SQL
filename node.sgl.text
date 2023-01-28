@@ -119,3 +119,48 @@ const name = req.query.name;
 pool.query('SELECT * FROM users WHERE name = $1', [name], (error, result) => {
   // rest of the code
 });
+
+To retrieve data from a database with multiple parameters, you can use an AND statement in your SQL query:
+
+app.get('/api/users', (req, res) => {
+  const age = req.query.age;
+  const gender = req.query.gender;
+  pool.query('SELECT * FROM users WHERE age = $1 AND gender = $2', [age, gender], (error, result) => {
+    if (error) {
+      res.status(500).json({ message: error.message });
+    } else {
+      res.status(200).json(result);
+    }
+  });
+});
+
+To update data in a database you can use a UPDATE statement in your SQL query:
+
+app.put('/api/users/:id', (req, res) => {
+  const id = req.params.id;
+  const data = req.body;
+  pool.query('UPDATE users SET name = $1, age = $2, email = $3 WHERE id = $4', [data.name, data.age, data.email, id], (error, result) => {
+    if (error) {
+      res.status(500).json({ message: error.message });
+    } else {
+      res.status(200).json(result);
+    }
+  });
+});
+
+In this example, the UPDATE statement updates the name, age, and email columns of the users table where the id column matches the value passed in the URL parameter.
+
+To delete data in a database you can use a DELETE statement in your SQL query:
+
+app.delete('/api/users/:id', (req, res) => {
+  const id = req.params.id;
+  pool.query('DELETE FROM users WHERE id = $1', [id], (error, result) => {
+    if (error) {
+      res.status(500).json({ message: error.message });
+    } else {
+      res.status(200).json(result);
+    }
+  });
+});
+
+In this example, the DELETE statement deletes the row from the users table where the id column matches the value passed in the URL parameter.
