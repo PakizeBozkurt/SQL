@@ -11,7 +11,7 @@ const router = express.Router();
 const { Pool } = require('pg'); // Linking Node.js end database!
 
 const pool = new Pool({
-    connectionString: process.env.DATABASE_URL
+    connectionString: process.env.DATABASE_URL // .env keeps secure!
 });
 
 router.post('/add', (req, res) => {
