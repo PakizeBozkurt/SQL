@@ -8,7 +8,7 @@ An API endpoint in Node.js that can add data to a PostgreSQL database using the 
 
 const express = require('express');
 const router = express.Router();
-const { Pool } = require('pg');
+const { Pool } = require('pg'); // Linking Node.js end database!
 
 const pool = new Pool({
     connectionString: process.env.DATABASE_URL
