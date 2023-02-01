@@ -8,10 +8,10 @@ An API endpoint in Node.js that can add data to a PostgreSQL database using the 
 
 const express = require('express');
 const router = express.Router();
-const { Pool } = require('pg');
+const { Pool } = require('pg'); // Linking Node.js end database!
 
 const pool = new Pool({
-    connectionString: process.env.DATABASE_URL
+    connectionString: process.env.DATABASE_URL // .env keeps secure! cors does do same!
 });
 
 router.post('/add', (req, res) => {
@@ -154,7 +154,7 @@ To delete data in a database you can use a DELETE statement in your SQL query:
 
 app.delete('/api/users/:id', (req, res) => {
   const id = req.params.id;
-  pool.query('DELETE FROM users WHERE id = $1', [id], (error, result) => {
+  pool.query('DELETE FROM users WHERE id = $1', [id], (error, result) => { // query '?'
     if (error) {
       res.status(500).json({ message: error.message });
     } else {
