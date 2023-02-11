@@ -1,0 +1,11 @@
+Normalization is a database design technique used to minimize data redundancy and dependency in a relational database. The goal of normalization is to ensure that each piece of data is stored in only one place, so that changes made to the data in one table do not affect other tables.
+
+In SQL, normalization is usually achieved through the use of table relationships and referential integrity constraints. There are several levels of normalization, each with a set of rules, known as normal forms, that dictate the structure of the data in the database. The most commonly used normal forms are:
+
+First Normal Form (1NF): Each column in a table must contain only atomic values, and each row must be unique.
+
+Second Normal Form (2NF): A table is in 2NF if it is in 1NF and every non-key column is dependent on the entire primary key.
+
+Third Normal Form (3NF): A table is in 3NF if it is in 2NF and there are no transitive dependencies between non-key columns.
+
+By normalizing a database, you can improve data quality, data integrity, and data management, and make it easier to maintain and modify the database over time.
