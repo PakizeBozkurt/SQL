@@ -54,3 +54,25 @@ In this design, the tables are in first normal form. Each table contains only at
 To further normalize this database to second normal form (2NF), we would ensure that each non-key column (Name in the Students table and Course_Name in the Courses table) is dependent on the entire primary key of its respective table. In this case, the primary keys are Student_ID in the Students table and Course_ID in the Courses table.
 
 By normalizing the data in this way, we have reduced data redundancy and improved data integrity. For example, if we needed to update the name of a course, we could do so in one place (in the Courses table), rather than having to make the same change in multiple places throughout the database.
+
+An availability table for trainees:
+
+CREATE TABLE Availability (
+  Availability_ID INT PRIMARY KEY AUTO_INCREMENT,
+  Trainee_ID INT NOT NULL,
+  Day_of_Week VARCHAR(10) NOT NULL,
+  Start_Time TIME NOT NULL,
+  End_Time TIME NOT NULL,
+  FOREIGN KEY (Trainee_ID) REFERENCES Trainees(Trainee_ID)
+);
+
+In this example, we create a table called Availability with five columns:
+
+Availability_ID: A unique identifier for each availability record.
+Trainee_ID: The ID of the trainee who is available.
+Day_of_Week: The day of the week the trainee is available (e.g., Monday, Tuesday, etc.).
+Start_Time: The start time of the trainee's availability.
+End_Time: The end time of the trainee's availability.
+We also specify a foreign key constraint on the Trainee_ID column, which ensures that each availability record is associated with a valid trainee in the Trainees table.
+
+You can then insert data into the Availability table to represent the available times for each trainee.
