@@ -48,3 +48,9 @@ Student_ID | Name
 2         | Jane
 3         | Jack
 4         | Jill
+
+In this design, the tables are in first normal form. Each table contains only atomic values (single values, rather than groups of values) and each row in each table is unique.
+
+To further normalize this database to second normal form (2NF), we would ensure that each non-key column (Name in the Students table and Course_Name in the Courses table) is dependent on the entire primary key of its respective table. In this case, the primary keys are Student_ID in the Students table and Course_ID in the Courses table.
+
+By normalizing the data in this way, we have reduced data redundancy and improved data integrity. For example, if we needed to update the name of a course, we could do so in one place (in the Courses table), rather than having to make the same change in multiple places throughout the database.
