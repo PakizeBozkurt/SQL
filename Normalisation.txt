@@ -9,3 +9,16 @@ Second Normal Form (2NF): A table is in 2NF if it is in 1NF and every non-key co
 Third Normal Form (3NF): A table is in 3NF if it is in 2NF and there are no transitive dependencies between non-key columns.
 
 By normalizing a database, you can improve data quality, data integrity, and data management, and make it easier to maintain and modify the database over time.
+
+A simple example of how normalization can be used in a relational database:
+
+Consider a table for storing information about students and the courses they are enrolled in:
+
+Student_ID | Name | Course | Grade
+------------------------------------
+1         | John | Math   | A
+2         | Jane | History| B
+3         | Jack | Math   | C
+4         | Jill | Science| A
+
+This table violates the first normal form (1NF) because it has repeating groups (courses and grades) in the same table. To normalize this table to 1NF, we would create separate tables for the courses and grades:
