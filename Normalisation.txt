@@ -22,3 +22,29 @@ Student_ID | Name | Course | Grade
 4         | Jill | Science| A
 
 This table violates the first normal form (1NF) because it has repeating groups (courses and grades) in the same table. To normalize this table to 1NF, we would create separate tables for the courses and grades:
+
+Courses
+---------
+Course_ID | Course_Name
+-----------------------
+1         | Math
+2         | History
+3         | Science
+
+Grades
+-------
+Grade_ID | Student_ID | Course_ID | Grade
+-----------------------------------------
+1        | 1         | 1        | A
+2        | 2         | 2        | B
+3        | 3         | 1        | C
+4        | 4         | 3        | A
+
+Students
+---------
+Student_ID | Name
+--------------------
+1         | John
+2         | Jane
+3         | Jack
+4         | Jill
