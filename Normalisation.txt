@@ -140,3 +140,5 @@ JOIN availability a2 ON a1.user_id <> a2.user_id
 JOIN users u2 ON a2.user_id = u2.user_id
 WHERE a1.start_time <= a2.end_time
   AND a1.end_time >= a2.start_time;
+
+The use of normalization in a PostgreSQL database by separating the data into multiple tables and using relationships between the tables to retrieve data. The results of this query will be a list of pairs of users with overlapping availability.
