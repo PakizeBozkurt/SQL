@@ -22,6 +22,19 @@ For example, consider a database that contains a table of students and a table o
 
 In short, normalization helps to ensure that data is stored in a consistent and organized manner, making it easier to maintain and query the database, and reducing the risk of data anomalies and inconsistencies.
 
+Normalization is an important aspect of database design and helps to ensure data integrity and consistency. Here are a few examples of how normalization can be applied in a PostgreSQL database:
+
+First Normal Form (1NF): Each column in a table should contain only atomic values, meaning that each value in a column should be indivisible. For example, if you have a column called "Name," it should contain only a single name, not multiple names separated by commas.
+
+Second Normal Form (2NF): All non-key columns in a table should be dependent on the entire primary key. For example, if you have a table of employees, the employee's name, address, and salary would depend on the employee's ID number, which is the primary key.
+
+Third Normal Form (3NF): No non-key column should depend on another non-key column. For example, if you have a table of customers, the customer's name and address should not depend on the customer's phone number.
+
+Fourth Normal Form (4NF): No multi-valued dependencies should exist in a table. For example, if you have a table of books, the book's title and author should not depend on the book's ISBN.
+
+These are just a few examples of how normalization can be applied in a PostgreSQL database. It's important to note that normalization is a iterative process and may require multiple passes to reach the desired level of normalization.
+
+
 
 A simple example of how normalization can be used in a relational database:
 
