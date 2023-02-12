@@ -10,6 +10,15 @@ Third Normal Form (3NF): A table is in 3NF if it is in 2NF and there are no tran
 
 By normalizing a database, you can improve data quality, data integrity, and data management, and make it easier to maintain and modify the database over time.
 
+Normalization in the context of a database refers to the process of organizing the data in the database to reduce redundancy and improve data integrity. The goal of normalization is to eliminate data redundancy and improve data consistency by creating tables and establishing relationships between these tables to ensure data is stored in the most efficient and consistent manner.
+
+PostgreSQL is a relational database management system that supports normalization as part of its data storage design. Normalization in PostgreSQL is achieved by creating tables for each entity and defining relationships between these tables. For example, if you were designing a database for a library, you would create a table for books, a table for authors, and a table for publishers. The relationships between these tables are established through foreign keys, which ensure that data is stored in a consistent manner and that data integrity is maintained.
+
+
+
+
+
+
 A simple example of how normalization can be used in a relational database:
 
 Consider a table for storing information about students and the courses they are enrolled in:
