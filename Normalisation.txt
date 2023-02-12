@@ -102,3 +102,41 @@ End_Time: The end time of the trainee's availability.
 We also specify a foreign key constraint on the Trainee_ID column, which ensures that each availability record is associated with a valid trainee in the Trainees table.
 
 You can then insert data into the Availability table to represent the available times for each trainee.
+
+-- Create tables for users and availability
+CREATE TABLE users (
+  user_id serial PRIMARY KEY,
+  name text NOT NULL,
+  email text NOT NULL
+);
+
+CREATE TABLE availability (
+  availability_id serial PRIMARY KEY,
+  user_id integer REFERENCES users (user_id),
+  start_time timestamp NOT NULL,
+  end_time timestamp NOT NULL
+);
+
+-- Insert sample data into the users table
+INSERT INTO users (name, email)
+VALUES
+  ('John Doe', 'johndoe@example.com'),
+  ('Jane Doe', 'janedoe@example.com'),
+  ('Jim Smith', 'jimsmith@example.com');
+
+-- Insert sample data into the availability table
+INSERT INTO availability (user_id, start_time, end_time)
+VALUES
+  (1, '2023-02-11 09:00:00', '2023-02-11 12:00:00'),
+  (1, '2023-02-12 14:00:00', '2023-02-12 17:00:00'),
+  (2, '2023-02-11 10:00:00', '2023-02-11 12:00:00'),
+  (3, '2023-02-12 09:00:00', '2023-02-12 11:00:00');
+
+-- Query to find all users with overlapping availability
+SELECT u1.name, u2.name
+FROM users u1
+JOIN availability a1 ON u1.user_id = a1.user_id
+JOIN availability a2 ON a1.user_id <> a2.user_id
+JOIN users u2 ON a2.user_id = u2.user_id
+WHERE a1.start_time <= a2.end_time
+  AND a1.end_time >= a2.start_time;
