@@ -14,7 +14,9 @@ Normalization in the context of a database refers to the process of organizing t
 
 PostgreSQL is a relational database management system that supports normalization as part of its data storage design. Normalization in PostgreSQL is achieved by creating tables for each entity and defining relationships between these tables. For example, if you were designing a database for a library, you would create a table for books, a table for authors, and a table for publishers. The relationships between these tables are established through foreign keys, which ensure that data is stored in a consistent manner and that data integrity is maintained.
 
+Normalization is an important aspect of database design that helps to minimize data redundancy and improve data integrity. It ensures that data is stored in a consistent and organized manner, making it easier to update, maintain, and query.
 
+The primary goal of normalization is to decompose a relational database into smaller, more manageable and more dependent tables. This reduces data redundancy and increases data integrity. It also helps to eliminate problems such as data anomalies, data inconsistencies, and update anomalies that may arise in a poorly designed database.
 
 
 
