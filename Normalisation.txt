@@ -172,3 +172,52 @@ CREATE TABLE publishers (
   publisher_name text
 );
 
+Sure! Here's an example of how you could normalize a database in PostgreSQL:
+
+Consider a database for a library, where you want to keep track of books, authors, and publishers.
+
+Initially, you might have a single table to store all this information, like this:
+
+vbnet
+Copy code
+CREATE TABLE library (
+  id serial primary key,
+  book_name text,
+  author_name text,
+  publisher_name text
+);
+However, this design violates the first normal form (1NF) because it has repeating data. To fix this, we can split the data into three separate tables: one for books, one for authors, and one for publishers.
+
+sql
+Copy code
+CREATE TABLE books (
+  id serial primary key,
+  book_name text
+);
+
+CREATE TABLE authors (
+  id serial primary key,
+  author_name text
+);
+
+CREATE TABLE publishers (
+  id serial primary key,
+  publisher_name text
+);
+
+
+Next, we can use foreign keys to establish relationships between the tables. A foreign key is a field in one table that refers to the primary key of another table.
+
+CREATE TABLE books_authors (
+  book_id int references books(id),
+  author_id int references authors(id),
+  primary key (book_id, author_id)
+);
+
+CREATE TABLE books_publishers (
+  book_id int references books(id),
+  publisher_id int references publishers(id),
+  primary key (book_id, publisher_id)
+);
+
+
