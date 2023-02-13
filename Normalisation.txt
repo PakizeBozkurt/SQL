@@ -220,4 +220,5 @@ CREATE TABLE books_publishers (
   primary key (book_id, publisher_id)
 );
 
+In this design, each table only stores data that pertains to a single entity (books, authors, or publishers). This ensures that the data is free of redundancy and easy to maintain. It also provides more flexibility in querying the data, as you can join tables together to retrieve related data in a single query.
 
