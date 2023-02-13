@@ -153,3 +153,22 @@ CREATE TABLE library (
   author_name text,
   publisher_name text
 );
+
+
+However, this design violates the first normal form (1NF) because it has repeating data. To fix this, we can split the data into three separate tables: one for books, one for authors, and one for publishers.
+
+CREATE TABLE books (
+  id serial primary key,
+  book_name text
+);
+
+CREATE TABLE authors (
+  id serial primary key,
+  author_name text
+);
+
+CREATE TABLE publishers (
+  id serial primary key,
+  publisher_name text
+);
+
