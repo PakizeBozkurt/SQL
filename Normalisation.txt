@@ -142,3 +142,14 @@ WHERE a1.start_time <= a2.end_time
   AND a1.end_time >= a2.start_time;
 
 The use of normalization in a PostgreSQL database by separating the data into multiple tables and using relationships between the tables to retrieve data. The results of this query will be a list of pairs of users with overlapping availability.
+
+Consider a database for a library, where you want to keep track of books, authors, and publishers.
+
+Initially, you might have a single table to store all this information, like this:
+
+CREATE TABLE library (
+  id serial primary key,
+  book_name text,
+  author_name text,
+  publisher_name text
+);
