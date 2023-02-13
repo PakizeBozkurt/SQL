@@ -222,3 +222,32 @@ CREATE TABLE books_publishers (
 
 In this design, each table only stores data that pertains to a single entity (books, authors, or publishers). This ensures that the data is free of redundancy and easy to maintain. It also provides more flexibility in querying the data, as you can join tables together to retrieve related data in a single query.
 
+||
+
+CREATE TABLE books (
+    id SERIAL PRIMARY KEY,
+    title VARCHAR(255),
+    author VARCHAR(255),
+    year INT
+);
+
+CREATE TABLE authors (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(255)
+);
+
+CREATE TABLE book_authors (
+    book_id INT REFERENCES books(id),
+    author_id INT REFERENCES authors(id),
+    PRIMARY KEY (book_id, author_id)
+);
+
+INSERT INTO authors (name) VALUES ('J.K. Rowling');
+INSERT INTO books (title, year) VALUES ('Harry Potter and the Philosopher''s Stone', 1997);
+
+INSERT INTO book_authors (book_id, author_id) 
+VALUES ((SELECT id FROM books WHERE title = 'Harry Potter and the Philosopher''s Stone'), 
+        (SELECT id FROM authors WHERE name = 'J.K. Rowling'));
+
+This is a simplified example, but it demonstrates the concept of normalizing data in a relational database. By breaking down the information into separate tables (books, authors, and book_authors), we can avoid data redundancy and ensure that the information is organized in a way that makes it easier to manage and maintain over time.
+
